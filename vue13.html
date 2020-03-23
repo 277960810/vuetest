@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            border: 1px solid red;
+        }
+
+        .active2 {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <img v-bind:src="imgUrl" alt="" v-bind:class="isAction?'active':'active2'" @click="toggleActive" v-show="isShow">
+        <input type="button" value="img1" @click="changeImg1">
+        <input type="button" value="img2" @click="changeImg2">
+    </div>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imgUrl: '',
+                imgUrl1: 'img/1.jpg',
+                imgUrl2: 'img/2.jpg',
+                isAction: false,
+                isShow: false,
+            },
+            methods: {
+                changeImg1: function(){
+                    this.imgUrl = this.imgUrl1
+                    this.isShow = true
+                },
+                changeImg2: function(){
+                    this.imgUrl = this.imgUrl2
+                    this.isShow = true
+                },
+                toggleActive: function() {
+                    this.isAction = !this.isAction
+                }
+            }
+        })
+    </script>
+</body>
+</html>
